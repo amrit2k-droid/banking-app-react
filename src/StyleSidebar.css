@@ -1,0 +1,38 @@
+
+td { 
+    display: inline-block; 
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+}
+.interest {
+    border-radius: 2px 2px 2px 2px;
+}
+
+.btn {
+    background-color: grey;
+}
+
+.total {
+    font-family: Arial, Helvetica, sans-serif;
+}
+.sliderInfo {
+    font-family: Arial, Helvetica, sans-serif;
+    color:blue;
+    text-decoration: underline;
+}
+.heading {
+    font-family: Arial, Helvetica, sans-serif;
+    margin-left: 500px;
+    text-decoration: underline;
+}
+
+.contents {
+    width: 750px;
+    padding: 5px;
+    border-style: solid;
+    border-radius: 2px;
+    border-color: black;
+}
+table {
+    padding: 3px;
+}
