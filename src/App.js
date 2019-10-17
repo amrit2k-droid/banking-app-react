@@ -11,7 +11,7 @@ class App extends React.Component {
 
   //defining the default value of the input slider
   state = { 
-    value: 0,
+    value: 500,
   };
 
   render() {
