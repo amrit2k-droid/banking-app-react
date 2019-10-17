@@ -75,7 +75,6 @@ class ShowData extends React.Component {
         This function takes data from the Child component (Sidebar) to autopopulate in the required fields.
     */
     dataHandler = (loanDataFromChild, monthsDataFromChild, interestDataFromChild) => {
-        document.getElementById('usr').value = loanDataFromChild;
         this.setState({
             value: monthsDataFromChild,
             dataOfInterest: interestDataFromChild,
