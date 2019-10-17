@@ -109,7 +109,7 @@ class ShowData extends React.Component {
         
         return (
             <div className="App">
-                <b>Loan Amount </b>: <input type="text"  value={this.state.receivedLoanData} placeholder="amr" className="form-control" id="usr" required/>
+                <b>Loan Amount </b>: <input type="text"  value={this.state.receivedLoanData} className="form-control" id="usr" required/>
                 <b>Months</b>: <input type="number" value={this.state.value} onChange={event => this.setMonths(event)}  className="form-control" id="pwd" min="6" max="24" />
                 <br />
                 <b>Interest Rate</b>: <span><input type="text" value={this.state.dataOfInterest}  className="interest"/></span>
