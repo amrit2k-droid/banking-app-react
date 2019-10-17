@@ -13,6 +13,7 @@ class ShowData extends React.Component {
     minInterest: minimum value for the interest rate,
     maxInterest: maximum value for the interest rate,
     value: minimum value for months that can be given to 'interest' field
+    receivedLoanData: storing the value from Slider 
     */
 
     constructor(props) {
@@ -32,6 +33,7 @@ class ShowData extends React.Component {
             stmt2: "taken for",
             stmt3: "months at an interest of",
             stmt4: "%.Total payable amount is $",
+            receivedLoanData: this.props.dataVal
         }
     }
 
@@ -39,7 +41,9 @@ class ShowData extends React.Component {
         This function saves the data to localStorage
     */
     saveToLocalStorage = () => {  
-        
+        this.setState({
+            receivedLoanData: this.props.dataVal
+        })
         this.state.totalData = this.props.dataVal + Number(this.state.dataOfMonths) * Number(this.state.dataOfInterest) / 100;  // calculating total amount payable at the end of interest period
         this.state.dataArray.push(this.props.dataVal);  // pushing the loan amount from loan input slider to dataArray
         this.state.pushMonthsData.push(this.state.dataOfMonths);  // pushing total months from 'months' field to pushMonthsData
@@ -67,7 +71,18 @@ class ShowData extends React.Component {
            
         })
     }
-
+    /*
+        This function takes data from the Child component (Sidebar) to autopopulate in the required fields.
+    */
+    dataHandler = (loanDataFromChild, monthsDataFromChild, interestDataFromChild) => {
+        document.getElementById('usr').value = loanDataFromChild;
+        this.setState({
+            value: monthsDataFromChild,
+            dataOfInterest: interestDataFromChild,
+            receivedLoanData: loanDataFromChild
+        })
+      
+    }
     render() {
         let bankingData = (
             <div>
@@ -83,7 +98,10 @@ class ShowData extends React.Component {
                     stmt1={this.state.stmt1}
                     stmt2={this.state.stmt2}
                     stmt3={this.state.stmt3}
-                    stmt4={this.state.stmt4} />
+                    stmt4={this.state.stmt4} 
+                    transferData={this.dataHandler}
+                    transferLoanData={this.loanDataHandler}
+                   />
                 })}    
             </div>
         )
@@ -92,7 +110,7 @@ class ShowData extends React.Component {
         
         return (
             <div className="App">
-                <b>Loan Amount </b>: <input type="text"  value={this.props.dataVal} className="form-control" id="usr" required/>
+                <b>Loan Amount </b>: <input type="text"  value={this.state.receivedLoanData} placeholder="amr" className="form-control" id="usr" required/>
                 <b>Months</b>: <input type="number" value={this.state.value} onChange={event => this.setMonths(event)}  className="form-control" id="pwd" min="6" max="24" />
                 <br />
                 <b>Interest Rate</b>: <span><input type="text" value={this.state.dataOfInterest}  className="interest"/></span>
@@ -101,8 +119,9 @@ class ShowData extends React.Component {
                 <button type="button" onClick={this.saveToLocalStorage} className="btn">Save Data</button>
                 <br />
                 <br />
-                <h2 className="total">Total ${this.props.dataVal + Number(this.state.dataOfMonths) * Number(this.state.dataOfInterest) / 100 }</h2>
+                <h2 className="total">Total ${this.state.receivedLoanData + Number(this.state.dataOfMonths) * Number(this.state.dataOfInterest) / 100 }</h2>
                 {bankingData}
+                
             </div>
         )
     }
