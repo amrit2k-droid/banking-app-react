@@ -33,7 +33,7 @@ class ShowData extends React.Component {
             stmt2: "taken for",
             stmt3: "months at an interest of",
             stmt4: "%.Total payable amount is $",
-            receivedLoanData: this.props.dataVal
+            receivedLoanData: 500                         
         }
     }
 
