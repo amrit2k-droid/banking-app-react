@@ -99,7 +99,6 @@ class ShowData extends React.Component {
                     stmt3={this.state.stmt3}
                     stmt4={this.state.stmt4} 
                     transferData={this.dataHandler}
-                    transferLoanData={this.loanDataHandler}
                    />
                 })}    
             </div>
